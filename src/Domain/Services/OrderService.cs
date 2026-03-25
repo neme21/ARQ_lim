@@ -1,19 +1,15 @@
-using System;
-using System.Collections.Generic;
+namespace Domain.Entities;
 
-namespace Domain.Services;
-
-using Domain.Entities;
-
-public static class OrderService
+public class Order
 {
-    public static List<Order> LastOrders = new List<Order>();
+    public int Id { get; set; }
+    public string CustomerName { get; set; }
+    public string ProductName { get; set; }
+    public int Quantity { get; set; }
+    public decimal UnitPrice { get; set; }
 
-    public static Order CreateTerribleOrder(string customer, string product, int qty, decimal price)
+    public decimal CalculateTotal()
     {
-        var o = new Order { Id = new Random().Next(1, 9999999), CustomerName = customer, ProductName = product, Quantity = qty, UnitPrice = price };
-        LastOrders.Add(o);
-        Infrastructure.Logging.Logger.Log("Created order " + o.Id + " for " + customer);
-        return o;
+        return Quantity * UnitPrice;
     }
 }
