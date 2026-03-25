@@ -1,7 +1,7 @@
+using System;
+using Domain.Entities;
 
 namespace Domain.Services;
-
-using Domain.Entities;
 
 public static class OrderService
 {
