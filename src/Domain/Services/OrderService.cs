@@ -1,15 +1,19 @@
-namespace Domain.Entities;
 
-public class Order
+namespace Domain.Services;
+
+using Domain.Entities;
+
+public static class OrderService
 {
-    public int Id { get; set; }
-    public string CustomerName { get; set; }
-    public string ProductName { get; set; }
-    public int Quantity { get; set; }
-    public decimal UnitPrice { get; set; }
-
-    public decimal CalculateTotal()
+    public static Order CreateTerribleOrder(string customer, string product, int qty, decimal price)
     {
-        return Quantity * UnitPrice;
+        return new Order
+        {
+            Id = new Random().Next(1, 1000),
+            CustomerName = customer,
+            ProductName = product,
+            Quantity = qty,
+            UnitPrice = price
+        };
     }
 }
