@@ -1,0 +1,6 @@
+[HttpGet]
+public IActionResult Test(string input)
+{
+    BadDb.ExecuteNonQueryUnsafe("SELECT * FROM Users WHERE name = '" + input + "'");
+    return Ok();
+}
