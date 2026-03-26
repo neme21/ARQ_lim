@@ -10,7 +10,7 @@ public class Order
 
     public Order(string customerName, string productName, int quantity, decimal unitPrice)
     {
-        Id = new Random().Next(1, 1000); // luego mejoramos esto
+        Id = new Random().Next(1, 1000); 
         CustomerName = customerName;
         ProductName = productName;
         Quantity = quantity;
