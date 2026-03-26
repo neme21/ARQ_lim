@@ -19,6 +19,6 @@ public static class OrderService
         if (price <= 0)
             throw new ArgumentException("Price must be greater than zero");
 
-        return new Order(customer, product, qty, price); // 
+        return new Order(customer, product, qty, price); 
     }
 }
