@@ -1,5 +1,5 @@
 namespace Domain.Entities;
-
+using System;
 public class Order
 {
     public int Id { get; private set; }
