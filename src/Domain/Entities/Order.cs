@@ -1,9 +1,8 @@
 namespace Domain.Entities;
-using System;
+
 public class Order
 {
     public int Id { get; private set; }
-
     public string CustomerName { get; private set; }
     public string ProductName { get; private set; }
     public int Quantity { get; private set; }
@@ -11,18 +10,7 @@ public class Order
 
     public Order(string customerName, string productName, int quantity, decimal unitPrice)
     {
-        if (string.IsNullOrWhiteSpace(customerName))
-            throw new ArgumentException("Customer name is required");
-
-        if (string.IsNullOrWhiteSpace(productName))
-            throw new ArgumentException("Product name is required");
-
-        if (quantity <= 0)
-            throw new ArgumentException("Quantity must be greater than 0");
-
-        if (unitPrice <= 0)
-            throw new ArgumentException("Price must be greater than 0");
-
+        Id = new Random().Next(1, 1000); // luego mejoramos esto
         CustomerName = customerName;
         ProductName = productName;
         Quantity = quantity;
