@@ -1,4 +1,5 @@
 using Domain.Interfaces;
+using System.Collections.Generic;
 
 public class GetUsersUseCase
 {
