@@ -1,5 +1,6 @@
 using Domain.Interfaces;
 using System.Data.SqlClient;
+using System.Collections.Generic;
 
 public class UserRepository : IUserRepository
 {
