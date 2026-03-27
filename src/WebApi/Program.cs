@@ -14,7 +14,8 @@ builder.Services.AddScoped<IOrderRepository>(sp =>
 builder.Services.AddScoped<CreateOrderUseCase>();
 builder.Services.AddScoped<IOrderRepository>(...);
 builder.Services.AddControllers();
-
+builder.Services.AddScoped<IUserRepository>(sp =>
+    new UserRepository(builder.Configuration.GetConnectionString("Sql")));
 var app = builder.Build();
 
 
