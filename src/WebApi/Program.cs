@@ -6,8 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-                      ?? "Server=localhost;Database=master;User Id=sa;Password=SuperSecret123!;TrustServerCertificate=True";
-
+    ?? "Server=localhost;Database=master;User Id=sa;Password=SuperSecret123!;TrustServerCertificate=True";
 
 builder.Services.AddScoped<IOrderRepository>(sp =>
     new OrderRepository(connectionString));
@@ -18,6 +17,9 @@ builder.Services.AddControllers();
 
 var app = builder.Build();
 
+
+app.UseHttpsRedirection();
+
 app.MapControllers();
 
-app.Run();un();
+app.Run();
