@@ -12,7 +12,7 @@ builder.Services.AddScoped<IOrderRepository>(sp =>
     new OrderRepository(connectionString));
 
 builder.Services.AddScoped<CreateOrderUseCase>();
-builder.Services.AddScoped<IOrderRepository>(...);
+builder.Services.AddScoped<IOrderRepository>();
 builder.Services.AddControllers();
 builder.Services.AddScoped<IUserRepository>(sp =>
     new UserRepository(builder.Configuration.GetConnectionString("Sql")));
