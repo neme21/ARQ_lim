@@ -1,7 +1,8 @@
 using Domain.Interfaces;
 using Microsoft.Data.SqlClient;
 using System.Collections.Generic;
-
+namespace Infrastructure.Data
+{
 public class UserRepository : IUserRepository
 {
     private readonly string _connectionString;
@@ -30,4 +31,5 @@ public class UserRepository : IUserRepository
 
         return result;
     }
+}
 }
