@@ -12,11 +12,16 @@ public static class Logger
         Console.WriteLine("[LOG] " + DateTime.Now + " - " + message);
     }
 
-    public static void Try(Action a)
-    {
-        try { a(); } catch(Exception)
+  public static void Try(Action a)
 {
-    throw;
-}
+    try
+    {
+        a();
     }
+    catch (Exception ex)
+    {
+        Log("Error: " + ex.Message);
+        throw;
+    }
+}
 }
