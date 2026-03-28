@@ -14,7 +14,7 @@ public static class Logger
 
     public static void Try(Action a)
     {
-        try { a(); } catch (Exception)
+        try { a(); } catch(Exception)
 {
     throw;
 }
