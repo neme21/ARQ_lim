@@ -1,7 +1,7 @@
 using Domain.Interfaces;
 using System.Collections.Generic;
 
-public class Aplication.UseCases.GetUsersUseCase
+public class Aplication.UseCases
 {
     private readonly IUserRepository _repo;
 
