@@ -1,5 +1,6 @@
-namespace Domain.Interfaces
 using System.Collections.Generic;
+
+namespace Domain.Interfaces
 {
 public interface IUserRepository
 {
