@@ -4,26 +4,20 @@ using Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-    
-
+var connectionString = builder.Configuration.GetConnectionString("Sql");
 
 builder.Services.AddScoped<IOrderRepository>(sp =>
-    new OrderRepository(connectionString));
-
+    new OrderRepository(connectionString!));
 
 builder.Services.AddScoped<CreateOrderUseCase>();
-
 
 builder.Services.AddControllers();
 
 builder.Services.AddScoped<IUserRepository>(sp =>
-    new UserRepository(builder.Configuration.GetConnectionString("Sql")));
+    new UserRepository(connectionString!));
 
 var app = builder.Build();
 
 app.UseHttpsRedirection();
-
 app.MapControllers();
-
 app.Run();
