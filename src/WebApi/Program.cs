@@ -20,4 +20,4 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 app.MapControllers();
-app.Run();
+await app.RunAsync();
