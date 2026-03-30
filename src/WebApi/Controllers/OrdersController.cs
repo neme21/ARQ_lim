@@ -16,6 +16,8 @@ public class OrdersController : ControllerBase
     }
 
     [HttpPost]
+    [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public IActionResult Create([FromBody] CreateOrderRequest request)
     {
         var order = _useCase.Execute(
