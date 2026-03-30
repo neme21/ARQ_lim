@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using Application.UseCases;
 
 namespace WebApi.Controllers;
@@ -17,11 +18,14 @@ public class OrdersController : ControllerBase
     [HttpPost]
     public IActionResult Create([FromBody] CreateOrderRequest request)
     {
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
         var order = _useCase.Execute(
-            request.Customer,
-            request.Product,
-            request.Quantity,
-            request.Price);
+            request.Customer!,
+            request.Product!,
+            request.Quantity!.Value,
+            request.Price!.Value);
 
         return Ok(order);
     }
@@ -29,8 +33,15 @@ public class OrdersController : ControllerBase
 
 public class CreateOrderRequest
 {
-    public string Customer { get; set; }
-    public string Product { get; set; }
-    public int Quantity { get; set; }
-    public decimal Price { get; set; }
+    [Required]
+    public string Customer { get; set; } = string.Empty;
+
+    [Required]
+    public string Product { get; set; } = string.Empty;
+
+    [Required]
+    public int? Quantity { get; set; }
+
+    [Required]
+    public decimal? Price { get; set; }
 }
