@@ -18,12 +18,9 @@ public class OrdersController : ControllerBase
     [HttpPost]
     public IActionResult Create([FromBody] CreateOrderRequest request)
     {
-        if (!ModelState.IsValid)
-            return BadRequest(ModelState);
-
         var order = _useCase.Execute(
-            request.Customer!,
-            request.Product!,
+            request.Customer,
+            request.Product,
             request.Quantity!.Value,
             request.Price!.Value);
 
@@ -34,14 +31,16 @@ public class OrdersController : ControllerBase
 public class CreateOrderRequest
 {
     [Required]
-    public string Customer { get; set; } = string.Empty;
+    public required string Customer { get; set; }
 
     [Required]
-    public string Product { get; set; } = string.Empty;
+    public required string Product { get; set; }
 
     [Required]
+    [Range(1, int.MaxValue)]
     public int? Quantity { get; set; }
 
     [Required]
+    [Range(typeof(decimal), "0.01", "999999999")]
     public decimal? Price { get; set; }
 }
